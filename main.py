@@ -52,13 +52,14 @@ class FizzbuzzHandler(Handler):
         n = n and int(n)
         self.render('fizzbuzz.html', n=n)
         
-class Rot13Handler(Handler):        
+class Rot13Handler(Handler,text=""):        
     def post(self):
         text = self.request.get('text', 0)
         text = doRot13(text)
         self.render('rot13.html', text=text)
         
     def get(self):
+        text = ""
         self.render('rot13.html', text=text)
         
 class MainPage(Handler):
